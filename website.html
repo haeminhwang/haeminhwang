@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>website</title>
+<meta name="website" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(function() {
+  
+  var html = $('html');
+  // Detections
+  if (!("ontouchstart" in window)) {
+    html.addClass("noTouch");
+  }
+  if ("ontouchstart" in window) {
+    html.addClass("isTouch");
+  }
+  if ("ontouchstart" in window) {
+    html.addClass("isTouch");
+  }
+  if (document.documentMode || /Edge/.test(navigator.userAgent)) {
+    if (navigator.appVersion.indexOf("Trident") === -1) {
+      html.addClass("isEDGE");
+    } else {
+      html.addClass("isIE isIE11");
+    }
+  }
+  if (navigator.appVersion.indexOf("MSIE") !== -1) {
+    html.addClass("isIE");
+  }
+  if (
+    navigator.userAgent.indexOf("Safari") != -1 &&
+    navigator.userAgent.indexOf("Chrome") == -1
+  ) {
+    html.addClass("isSafari");
+  }
+
+  // On Screen
+
+  $.fn.isOnScreen = function() {
+    var elementTop = $(this).offset().top,
+      elementBottom = elementTop + $(this).outerHeight(),
+      viewportTop = $(window).scrollTop(),
+      viewportBottom = viewportTop + $(window).height();
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+  };
+
+  function detection() {
+    for (var i = 0; i < items.length; i++) {
+      var el = $(items[i]);
+
+      if (el.isOnScreen()) {
+        el.addClass("in-view");
+      } else {
+        el.removeClass("in-view");
+      }
+    }
+  }
+
+  var items = document.querySelectorAll(
+    "*[data-animate-in], *[data-detect-viewport]"
+  ),
+    waiting = false,
+    w = $(window);
+
+  w.on("resize scroll", function() {
+    if (waiting) {
+      return;
+    }
+    waiting = true;
+    detection();
+
+    setTimeout(function() {
+      waiting = false;
+    }, 100);
+  });
+
+  $(document).ready(function() {
+    setTimeout(function() {
+      detection();
+    }, 500);
+
+    for (var i = 0; i < items.length; i++) {
+      var d = 0,
+        el = $(items[i]);
+      if (items[i].getAttribute("data-animate-in-delay")) {
+        d = items[i].getAttribute("data-animate-in-delay") / 1000 + "s";
+      } else {
+        d = 0;
+      }
+      el.css("transition-delay", d);
+    }
+  });
+});
+</script>
+
+<style>
+[data-animate-in] {
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease
+}
+
+[data-animate-in="up"] {
+    transform: translate3d(0, 24px, 0)
+}
+
+[data-animate-in="left"] {
+    transform: translate3d(-25%, 0, 0)
+}
+
+[data-animate-in="right"] {
+    transform: translate3d(25%, 0, 0)
+}
+
+[data-animate-in="down"] {
+    transform: translate3d(0, -24px, 0)
+}
+
+[data-animate-in="fadeIn"] {
+    transform: translate3d(0, 0, 0)
+}
+
+[data-animate-in].in-view {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transition: transform 0.6s ease, opacity 0.6s ease
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease
+}
+
+.page-loaded .fade-in,.page-loaded.fade-in {
+    opacity: 1
+}
+
+.isSafari.isTouch [data-animate-in],.isSafari.isTouch [data-animate-in="up"] {
+    opacity: 1;
+    transition: none;
+    transform: none
+}
+
+body {
+background-color: #ffd1dc;
+font-family: system-ui, sans-serif;
+animation: fadeInAnimation ease 1s; 
+            animation-iteration-count: 1; 
+            animation-fill-mode: forwards; 
+        } 
+        @keyframes fadeInAnimation { 
+            0% { 
+                opacity: 0; 
+            } 
+            100% { 
+                opacity: 1; 
+            } 
+}
+
+html{
+scroll-behavior:smooth;
+}
+#myBtn {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  font-size: 30px;
+  border: none;
+  outline: none;
+  background-color: #ffd1dc;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+}
+
+#myBtn:hover {
+  background-color: #ffd1dc;
+}
+main {
+	text-align: left;
+	font-size: 30px;
+	color: olivedrab;
+	margin-left: 400px;
+}
+
+
+a:visited, a:focus {
+    text-decoration: none;
+    color: red;
+}
+a:hover {
+text-decoration: none;
+color: blue;
+}
+
+
+img{	
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.video {
+ width: 80%;
+ margin: 0 auto;
+ display: block;
+ height:auto;
+}
+h1 {
+  font-family: system-ui, sans-serif;
+  font-size: 48px;
+  text-align: left;
+margin-left:25px;
+margin-right:25px;
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<h1 style="color:red"><b><a href="index.html" style="text-decoration:none">hae,</a></b></h1>
+
+
+
+<button onclick="topFunction()" id="myBtn" title="Go to top"><img src="emojis/up.png" alt="iteration 1" style="width:30px;height:30px;"></button>
+
+<script>
+var mybutton = document.getElementById("myBtn");
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+
+
+<main><i>
+	my website (case study)
+</i></main>
+<h3 style="margin-right:50px;margin-left:400px;">This was my very first time coding in HTML/CSS/JS, and my first experience with web design. I was introduced to HTML and CSS through a digital class, and I have been developing my skills independently through the internet and books.</h2>
+
+<h3 style="margin-right:50px;margin-left:400px;">I chose this as my first independent design project because I wanted to curate my work and show it to the audience through my vision. I also felt motivated to complete a personal project.</h2>
+
+<h3 style="margin-right:50px;margin-left:400px;">My main target audience was potential employers, including other artists, museums, and companies, and my main goal was to impress my target audience with an innovative aesthetic.</h3>
+
+
+
+<h3 style="margin-right:80px;margin-left:80px;">
+Iteration 1:
+<br>The main problem I ran into was creating a user friendly interface without resorting to a single-page scrolling site. One reason I wanted to deviate away from the modern design standard was to stand out, and also I believed my work warranted their own separate pages. Through this, I explored many ways to show my personality. Each icon links to a separate page of one of my works, and the "hae" acts as a home button while the "min" is an about page. The result is presented in the following screenshots. (Note: all photos were taken by myself)
+</h3>
+<div class="row">
+  <div data-animate-in="left" class="column">
+    <img src="website/1.png" alt="iteration 1" style="width:100%">
+  </div>
+  <div data-animate-in="right" class="column">
+    <img src="website/2.png" alt="iteration 1" style="width:100%">
+  </div>
+</div>
+
+
+<h3 style="margin-right:85px;margin-left:80px;">
+Design Rationale:
+<br>
+I wanted to make the navigation explorative and up to the user. Although this may be considered poor design, I wanted my site to live as its own breathing entity. I wanted my site to not fall in the column of single-page scroll design. In addition, I wanted to lure the user in; I wanted the site to be captivating and enigmatic enough to have people linger, so I made everything simultaneously accessible and explorative.
+</h3>
+
+<h3 data-animate-in="up" style="margin-right:80px;margin-left:80px;">
+Iteration 2: a simple, multiple page site (with no JavaScript)
+<br>I wanted the navigation to stay predominantly the same, but have more icons so the user can have some intuitive guess within their decision making. I added different icons for different projects I've worked on, and also started teaching myself Javascript for responsivity.
+<img>
+<img src="website/3.png" alt="iteration 2" style="width:100%">
+</img></h3>
+
+<h3 data-animate-in="up" style="margin-right:80px;margin-left:80px;">
+Design Rationale:
+</h3>
+<h3 data-animate-in="up" style="margin-right:80px;margin-left:80px;">
+Audience: potential employers and those interested in my portfolio/work/resume. I want my site to act as a homepage where I can present all my work and skills in fine arts and design, and to come off as a well-rounded, fine arts student with a passion for design.
+</h3>
+<h3 data-animate-in="up" style="margin-right:80px;margin-left:80px;">
+Concept: I want to portray myself as a student who has experience in art, code, and design. By creating a dynamic website that invites the user in, I want to establish an intimate relationship with the user. This site is a reflection of my personality and creativity, so it lies in the same realm as my creative scope. In addition, I want the work to be presented professionally to show that I would be a good fit for a company.</h3>
+
+<h3 data-animate-in="up" style="margin-right:80px;margin-left:80px;">
+Design goals: my goal is to impress the user. And also to create a personal website that is inviting, not text-heavy, and visually-based to convey my artistic abilities to complement my technical skills.</h3>
+<h3 data-animate-in="up" style="margin-right:80px;margin-left:80px;">
+1) Layout: different pages for different projects and pieces: I decided that the content for each section warranted its own page. Each page has a fun way to get back to the homepage-- by clicking "hae" at the top left. This is fixed to the top of the page and turns blue when hovered on to indicate it is a functional button.
+<h3 data-animate-in="up" style="margin-right:80px;margin-left:80px;">
+2) Tradeoffs include, but are not limited to, simplicity. Single-page scrolling is easier and more continuous than clicking endless links. Moreover, not everybody is a fan of a super immersive website without self-explanatory labels, especially if its purpose is to attract potential employers who will not spend much time on my site. However, I wanted to convey my personal taste into my design. As 2020 trends reverted back to the 1990s, I gave my website a raw, html aesthetic that complemented my skills as well as trends in real time. </h3>
+<h3 data-animate-in="up" style="margin-right:80px;margin-left:80px;">
+3) Target audience needs: all information must be succinct and easily accessible. This is why I chose to navigate through icons because pictures speak a thousand words. I still believe the flow is logical.</h3>
+<h3 data-animate-in="up" style="margin-right:80px;margin-left:80px;">
+4) Navigation: I chose a fixed "hae" that floats atop the page at all times. It turns blue when hovered on, indicating its purpose as a nav button.</h3>
+<h3 data-animate-in="up" style="margin-right:80px;margin-left:80px;">
+5) Font: I chose a font (Times New Roman), that is legible and easily identifiable as a professional type.</h3>
+
+
+
+<h3 data-animate-in="up" style="margin-right:80px;margin-left:80px;">
+Iteration 3: a fully responsive site (with HTML/CSS/JS)
+<br> after user testing, I changed the font to something that is much more legible. The consistency in space and weight of the font allows for the site to seem more modern and purposeful.
+</h3>
+<h3 data-animate-in="up" style="margin-right:80px;margin-left:80px;">
+Navigation: After user testing, I included a fade in/out transition for each page to create more smoothness when navigating. After user testing, I also included a scroll-to-top button with a smooth scroll effect for certain pages for better user interface (as you can see on this page).</h3>
+<div class="row">
+  <div data-animate-in="left" class="column">
+    <img src="website/4.png" alt="iteration 3" style="width:100%">
+  </div>
+  <div data-animate-in="right" class="column">
+    <img src="website/5.png" alt="iteration 3" style="width:100%">
+  </div>
+</div>
+
+<h3 data-animate-in="up" style="margin-right:80px;margin-left:80px;">
+Iteration 4: an updated homepage that emphasizes better design that includes a text typing animation to seem more personal
+<img>
+<img src="website/6.png" alt="iteration 4" style="width:100%">
+</img></h3>
+</body>
+</html>

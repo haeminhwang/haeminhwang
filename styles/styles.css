@@ -1,0 +1,44 @@
+
+
+.sun {
+	position: absolute;
+	top: 10px;
+	right: 200px;
+}
+
+.tree {
+	position: absolute;
+	top: 30px;
+	right: 150px;
+}
+
+.house {
+	position: absolute;
+	top: 30px;
+	right: 120px;
+}
+
+.car {
+	position: absolute;
+	top: 30px;
+	right: 90px;
+}
+
+.rose {
+	position: absolute;
+	top: 60px;
+	right: 150px;
+}
+
+.sunflower {
+	position: absolute;
+	top: 60px;
+	right: 180px;
+}
+
+.tulip {
+	position: absolute;
+	top: 60px;
+	right: 210px;
+}
+

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>blob babes</title>
+<link href="styles/styles.css" rel="stylesheet"/>
+<style>
+body {
+background-color: #ffd1dc;
+font-family: system-ui, sans-serif;
+animation: fadeInAnimation ease 1s; 
+            animation-iteration-count: 1; 
+            animation-fill-mode: forwards; 
+        } 
+        @keyframes fadeInAnimation { 
+            0% { 
+                opacity: 0; 
+            } 
+            100% { 
+                opacity: 1; 
+            } 
+}
+
+h1 {
+  font-family: system-ui, sans-serif;
+  font-size: 48px;
+  text-align: left;
+margin-left:25px;
+margin-right:25px;
+}
+
+div.scroll {
+	overflow: scroll;
+}
+figcaption {
+	padding: 2px;
+	color: red;
+}
+a:visited, a:focus {
+    text-decoration: none;
+    color: red;
+}
+a:hover {
+text-decoration: none;
+color: blue;
+}
+.absolute {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}
+
+html{
+scroll-behavior:smooth;
+}
+#myBtn {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  font-size: 30px;
+  border: none;
+  outline: none;
+  background-color: #ffd1dc;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+}
+
+#myBtn:hover {
+  background-color: #ffd1dc;
+}
+
+</style>
+</head>
+
+
+
+<body>
+
+
+<h1 style="color:red"><b><a href="index.html" style="text-decoration:none">hae,</a></b></h1>
+<button onclick="topFunction()" id="myBtn" title="Go to top"><img src="emojis/up.png" alt="iteration 1" style="width:30px;height:30px;"></button>
+
+<script>
+var mybutton = document.getElementById("myBtn");
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+
+<div style="float:right; padding:60px;">
+<p id="1">
+	<img src="paintings/spring_sprite.jpg" alt="spring sprite painting" style="float:right;padding:20px;width:50%" />
+	<h1 style="color:olivedrab">
+	<br>series 1: blob babes</h1>
+	<figcaption>
+	<b>october 2020
+	<br>these paintings represent the limitless of the female body and the way it acts as a precious vessel. each painting takes into consideration the voyeur, which is the viewer. due to their size, you're forced to view them up close.</b></figcaption>
+	<br><h1 style="color:olivedrab">spring sprite
+	<br>oil on board, 8" x 10"
+	<img src="paintings/foot_closeup.png" alt="spring sprite painting cloesup" style="float:right;padding:20px;width:50%" />
+<div style="clear: right;"/>
+</h1></p>
+   
+<div style="float:left;">
+<p><img src="paintings/deflowering.png" alt="deflowering painting" id="2" style="float:left;width:50%;">
+<h1 style="color:olivedrab">
+	<br>deflowering
+	<br> oil on board, 8" x 10"
+<div style="clear: right;"/>
+</h1></p></name>
+
+<div style="float:right; padding:56px;">
+<p>
+	<img src="paintings/cherrybomb.png" alt="cherrybomb painting" id="3" style="float:right;padding:20px;width:50%">
+	<h1 style="color:olivedrab">
+	<br>CHERRYBOMB
+	<br> oil on board, 8" x 10"
+</h1></p>
+<p>
+	<img src="paintings/cb_detail.png" alt="cherrybomb painting" style="float:right;padding:20px;width:50%">
+<div style="clear: right;"/>
+</p>
+
+
+
+<div class="sun">
+<a href="backbone.html">
+<img src="emojis/sun.png" alt="sun emoji" style="width:25px;height:25px;">
+</a>
+</div>
+
+<div class="tree">
+<a href="darwinism.html">
+<img src="emojis/tree.png" alt="tree emoji" style="width:25px;height:25px;">
+</a>
+</div>
+
+<div class="house">
+<a href="home.html">
+<img src="emojis/house.png" alt="house emoji" style="width:25px;height:25px;">
+</a>
+</div>
+
+<div class="car">
+<a href="slippers.html">
+<img src="emojis/car.png" alt="car emoji" style="width:25px;height:25px;">
+</a>
+</div>
+
+
+<div class="rose">
+<a href="blob_babes.html#3">
+<img src="emojis/rose.png" alt="rose emoji" style="width:25px;height:25px;">
+</a>
+</div>
+
+
+<div class="tulip">
+<a href="blob_babes.html">
+<img src="emojis/tulip.png" alt="tulip emoji" style="width:25px;height:25px;">
+</a>
+</div>
+
+<div class="sunflower">
+<a href="blob_babes.html#2">
+<img src="emojis/sunflower.png" alt="sunflower emoji" style="width:25px;height:25px;">
+</a>
+</div>
+
+
+
+
+
+</body>
+
+
+
+</html>
