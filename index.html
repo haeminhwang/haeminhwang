@@ -34,6 +34,42 @@ animation: fadeInAnimation ease 1s;
    
 }
 
+.tooltip {
+  position: relative;
+font-family: system-ui, sans-serif;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+	
 a{color: red;
 	text-decoration: none;
 	}
@@ -78,10 +114,9 @@ margin-right:25px;
 <body>
 
 
-
 <h1 style="color:red"><b><a href="index.html" style="text-decoration:none">hae,</a></b></h1>
 <p style="color:red">
-
+	
 <strong>how are <mark>you</mark> doing today?</strong></p>
 
 
@@ -154,22 +189,30 @@ window.onload = function() {
 <div class="row">
 	<div class="img">
 <a href="paintings.html">
-	   <img src="emojis/palette.png" alt="palette" style="width:40%">
+	<div class="tooltip">
+	   <img src="emojis/palette.png" alt="palette" style="width:40%"><span class="tooltiptext">paintings</span>
+</div>
 </a>
 	</div>
 	<div class="img">
 <a href="website.html">
-	   <img src="emojis/laptop.png" alt="laptop" style="width:40%">
+	<div class="tooltip">
+	   <img src="emojis/laptop.png" alt="laptop" style="width:40%"><span class="tooltiptext">website case study</span>
+</div>
 </a>
 	</div>
 	<div class="img">
 <a href="sound_studies.html">
-	   <img src="emojis/monkey.png" alt="monkey" style="width:40%">
+	<div class="tooltip">
+	   <img src="emojis/monkey.png" alt="monkey" style="width:40%"><span class="tooltiptext">sound studies</span>
+</div>
 </a>
 	</div>
 	<div class="img">
 <a href="creative_coding.html">
-	   <img src="emojis/light.png" alt="lightbulb" style="width:40%">
+	<div class="tooltip">
+	   <img src="emojis/light.png" alt="lightbulb" style="width:40%"><span class="tooltiptext">creative coding</span>
+</div>
 	</div>
 </div>
 
