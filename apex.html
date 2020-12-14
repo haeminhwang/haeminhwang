@@ -49,12 +49,55 @@ h1 {
 margin-left:25px;
 margin-right:25px;
 }
+	
+	html{
+scroll-behavior:smooth;
+}
+#myBtn {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  font-size: 40px;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+}
+
+#myBtn:hover {
+  background-color: olivedrab;
+}
 
 </style>
 </head>
 
 <body>
 <h1 style="color:red"><b><a href="index.html" style="text-decoration:none">hae,</a></b></h1>
+<button onclick="topFunction()" id="myBtn" title="Go to top"><img src="emojis/up.png" alt="up button" style="display:block;margin-left:auto;margin-right:auto;width:40px;height:40px;"></button>
+
+<script>
+var mybutton = document.getElementById("myBtn");
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
 <img>
 	<img src="paintings/apex.png" alt="apex painting" style="width:40%">
 	<figcaption><h2>
