@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>About</title>
-<meta name="about me" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="styles/styles.css" rel="stylesheet"/>
  <link rel="icon" type="image/png" href="icon.png">
 <style>
@@ -71,7 +71,15 @@ margin:auto;
 padding: 30px;
 margin-left:100px;
 }
-
+@media only screen and (max-width:620px) {
+  /* For mobile phones: */
+  .h5,{
+    width:100%;
+  }
+  .h1{
+  width:30%;
+  }
+}
 </style>
 </head>
 
