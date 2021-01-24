@@ -1,4 +1,6 @@
-
+.spacing {
+	line-height: 1.6;
+}
 
 .sun {
 	position: absolute;
