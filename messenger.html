@@ -1,0 +1,478 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Messenger</title>
+<meta name="Messenger Case Study" content="width=device-width, initial-scale=1">
+<link href="styles/styles.css" rel="stylesheet"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(function() {
+  
+  var html = $('html');
+  // Detections
+  if (!("ontouchstart" in window)) {
+    html.addClass("noTouch");
+  }
+  if ("ontouchstart" in window) {
+    html.addClass("isTouch");
+  }
+  if ("ontouchstart" in window) {
+    html.addClass("isTouch");
+  }
+  if (document.documentMode || /Edge/.test(navigator.userAgent)) {
+    if (navigator.appVersion.indexOf("Trident") === -1) {
+      html.addClass("isEDGE");
+    } else {
+      html.addClass("isIE isIE11");
+    }
+  }
+  if (navigator.appVersion.indexOf("MSIE") !== -1) {
+    html.addClass("isIE");
+  }
+  if (
+    navigator.userAgent.indexOf("Safari") != -1 &&
+    navigator.userAgent.indexOf("Chrome") == -1
+  ) {
+    html.addClass("isSafari");
+  }
+
+  // On Screen
+
+  $.fn.isOnScreen = function() {
+    var elementTop = $(this).offset().top,
+      elementBottom = elementTop + $(this).outerHeight(),
+      viewportTop = $(window).scrollTop(),
+      viewportBottom = viewportTop + $(window).height();
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+  };
+
+  function detection() {
+    for (var i = 0; i < items.length; i++) {
+      var el = $(items[i]);
+
+      if (el.isOnScreen()) {
+        el.addClass("in-view");
+      } else {
+        el.removeClass("in-view");
+      }
+    }
+  }
+
+  var items = document.querySelectorAll(
+    "*[data-animate-in], *[data-detect-viewport]"
+  ),
+    waiting = false,
+    w = $(window);
+
+  w.on("resize scroll", function() {
+    if (waiting) {
+      return;
+    }
+    waiting = true;
+    detection();
+
+    setTimeout(function() {
+      waiting = false;
+    }, 100);
+  });
+
+  $(document).ready(function() {
+    setTimeout(function() {
+      detection();
+    }, 500);
+
+    for (var i = 0; i < items.length; i++) {
+      var d = 0,
+        el = $(items[i]);
+      if (items[i].getAttribute("data-animate-in-delay")) {
+        d = items[i].getAttribute("data-animate-in-delay") / 1000 + "s";
+      } else {
+        d = 0;
+      }
+      el.css("transition-delay", d);
+    }
+  });
+});
+</script>
+
+<style>
+[data-animate-in] {
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease
+}
+
+[data-animate-in="up"] {
+    transform: translate3d(0, 24px, 0)
+}
+
+[data-animate-in="left"] {
+    transform: translate3d(-25%, 0, 0)
+}
+
+[data-animate-in="right"] {
+    transform: translate3d(25%, 0, 0)
+}
+
+[data-animate-in="down"] {
+    transform: translate3d(0, -24px, 0)
+}
+
+[data-animate-in="fadeIn"] {
+    transform: translate3d(0, 0, 0)
+}
+
+[data-animate-in].in-view {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transition: transform 0.6s ease, opacity 0.6s ease
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease
+}
+
+.page-loaded .fade-in,.page-loaded.fade-in {
+    opacity: 1
+}
+
+.isSafari.isTouch [data-animate-in],.isSafari.isTouch [data-animate-in="up"] {
+    opacity: 1;
+    transition: none;
+    transform: none
+}
+
+body {
+background-color: #ffd1dc;
+overflow-x:hidden;
+font-family: system-ui, sans-serif;
+animation: fadeInAnimation ease 1s; 
+            animation-iteration-count: 1; 
+            animation-fill-mode: forwards; 
+        } 
+        @keyframes fadeInAnimation { 
+            0% { 
+                opacity: 0; 
+            } 
+            100% { 
+                opacity: 1; 
+            } 
+}
+
+html{
+scroll-behavior:smooth;
+}
+#myBtn {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  font-size: 40px;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+}
+
+#myBtn:hover {
+  background-color: olivedrab;
+}
+main {
+	text-align: left;
+	color: olivedrab;
+	
+}
+a{color: red;
+	text-decoration: none;
+	}
+
+a:visited, a:focus {
+    text-decoration: none;
+    color: red;
+}
+a:hover {
+text-decoration: none;
+color: blue;
+}
+
+
+img{	
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 1000px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.video {
+ width: 80%;
+ margin: 0 auto;
+ display: block;
+ height:auto;
+}
+h1 {
+  font-family: system-ui, sans-serif;
+  font-size: 48px;
+  text-align: left;
+margin-left:25px;
+margin-right:25px;
+}
+
+h2 {
+  font-family: system-ui, sans-serif;
+  font-size: 48px;
+  text-align: left;
+}
+
+h3 {
+  font-family: system-ui, sans-serif;
+  font-size: 40px;
+  text-align: left;
+}
+
+h4 {
+  font-family: system-ui, sans-serif;
+  font-size: 36px;
+  text-align: left;
+}
+
+h5 {
+  font-family: system-ui, sans-serif;
+  font-size: 24px;
+  text-align: left;
+}
+h6 {
+  font-family: system-ui, sans-serif;
+  font-size: 20px;
+  text-align: left;
+}
+
+.fixed {
+max-width: 700px;
+margin:auto;
+padding: 30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1 style="color:red"><b><a href="index.html" style="text-decoration:none">hae,</a></b></h1>
+
+
+
+<button onclick="topFunction()" id="myBtn" title="Go to top"><img src="emojis/up.png" alt="up button" style="width:40px;height:40px;"></button>
+	
+<script>
+var mybutton = document.getElementById("myBtn");
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+
+<div class="spacing">
+<div class="fixed">
+<main><h2 style="margin-bottom: 0px"><b>
+	Case Study: Facebook Messenger Redesign</b>
+</h2><h3 style="margin-top: 10px; opacity: 0.5">
+Product Design // Side Project</h3>
+</main>
+
+<p style="opacity: 0.5">*NOTE: This case study took place after Facebook had removed the Discover tab, and so the Discover tab is removed in the final redesign without further explanations. </p>
+<h4 style="margin-top: 45px; margin-bottom: 10px">Overview </h4>
+<p>As a person who loves to connect with friends, family, and peers, Facebook Messenger has become one of my staple messaging apps. It's important for me to be able to easily connect and communicate with people without any interruptions or distractions.</p>
+
+<div data-animate-in="up">
+<div class="row" style: "padding-top: 30px">
+<h5 style="margin-top: 30px; margin-bottom:10px; opacity: 0.5">
+Chats Tab</h5>
+<p>The Chats tab contains all my chats by time. Navigation becomes a crucial part in usability for communicating with people on our devices. However, it is often hard to navigate Messenger because it becomes cluttered with irrelevant chats such as new connections ('you and ___ are now connected on messenger') when I make new friends on Facebook. Therefore, I become distracted. 
+</p>
+<p>I began to wonder if this was a universal thing across different users. I wondered, how might Messenger allow users to prioritize chats? How might it become easier to navigate without clutter and distraction?</p>
+</div>
+
+<div data-animate-in="up">
+<h4 style="margin-top: 45px; margin-bottom: 10px">The Problem</h4>
+<h5 style="opacity: 0.5; margin-top: 10px; margin-bottom: 10px">Poor Navigation</h5>
+<p>At the beginning of this study, my hypothesis was: People have a hard time finding active chats because Messenger groups new connections within the Chats tab, ultimately cluttering the inbox. </p>
+</div>
+<div data-animate-in="up">
+<h5 style="opacity: 0.5; margin-top: 10px; margin-bottom: 10px">User Research</h5>
+<p>I interviewed six Messenger users, ranging from users who used Messenger for over ten years, and some who used it for three months. My goal was to learn how different users interact and navigate within the app.</p>
+</div>
+
+<div data-animate-in="up">
+<h6 style="margin-bottom:10px; margin-top: 10px;">
+Key Insights: Unreliable Navigation</h6>
+
+<p>
+1. The Chats tab does not cover all the needs of the users as people feel a lack of control and many users did not know certain features existed (eg. message requests and spam are hidden features that users can find outside of their Chats tab).</p>
+<p>
+2. The "new connection" chats appearing with active chats was a deterrent of engagement, as users were often distracted from active conversations. </p>
+<p>
+3. The People tab was seldom used by users who use Messenger primarily to engage in conversations with groups and friends. Users spend less time checking the activity of their friends on the app than on Messenger desktop.</p>
+<p>
+4. Many users did not know exactly how to use the search bar, some stating they used it strictly to find keywords in chats, others to find names of contacts. Lack of clarity caused users to scroll through their chats to find old conversations, leading them to be distracted and less engaged in activity.
+</p>
+</div>
+
+<div data-animate-in="up">
+<h4 style="margin-top: 45px; margin-bottom: 10px">People Want Efficiency and Transparency</h4>
+<p>
+In the beginning, I believed that users found their Chats cluttered due to 'new connections.' However, after user research, I found that it was a bigger problem: they wanted more transparency and streamlined navigation within the app.</p>
+<p>
+<b>Hypothesis: People want to navigate their chats with ease and transparency, but they can't because the current navigation system is inefficient and distracting.</b></p></div>
+
+<div data-animate-in="up">
+<h4 style="margin-top: 45px; margin-bottom: 10px">Initial Braindump</h4>
+<p>
+I asked my friend to help brainstorm potential features to find possible solutions.<p>
+<img data-animate-in="up">
+<img src="messenger/braindump.png" alt="brainstorm session" style="width:70%">
+</img>
+<p>After our brainstorming session, we came up with two potential opportunities to explore:</p>
+
+<p>1. Transparent Content: How might we help users access <i>all</i> their messages on one page? If Messenger made it easier to access their chats, users would have more transparency on the app.</p>
+<p>2. Decreasing Distractions: How might we help users find what they're looking for with little to no distractions? If Messenger made it more clear as to what/how to search for something, users would spend less time scrolling through their inbox.</p>
+</div>
+</div>
+
+<div data-animate-in="up">
+<h5 style="opacity: 0.5; margin-top: 10px; margin-bottom: 10px">How Might We Help Messenger Improve Usability?</h5>
+<ul><li>
+HMW be able to minimize the amount of actions taken to complete a task?</li>
+<li>
+HMW be able to find features discoverable within the app?</li></ul>
+
+<p>
+I decided that the best solution was to redesign the layout of the Chats tab with a central focus on restoring usability to be transparent and easy to navigate. In doing so, I would remove the People tab, as users can already see the activity status of their friends in the Chats tab. According to my user research, it seemed unnecessary to keep a tab that was seldom used. I made these decisions based on current user needs that were not being met. In addition, having all content in a single feed allows Messenger to be transparent with new users. According to my user research, most users did not know where their message requests were located, let alone knowing they had any active requests.<p></div>
+
+<div data-animate-in="up">
+<h4 style="margin-top: 45px; margin-bottom: 10px">Other Apps That Address My Problem</h4>
+<img data-animate-in="up">
+<img src="messenger/apps.png" alt="App Comparison" style="width:100%; margin: center">
+</img>
+
+<p>These apps address transparency and navigation similarly to one another. Users are able to look at their inbox at a glance without having to navigate to a different place in the app. In Band, Instagram, and Twitter, the number of message requests are shown above active chats, while in iMessage, unknown numbers are grouped into the inbox. For Whatsapp, message requests are unavailable because users must have each other's numbers to engage in conversation.</p>
+</div>
+
+<div data-animate-in="up">
+<h4 style="margin-top: 45px; margin-bottom: 10px">Wireframing User Flow and Explorations</h4>
+<img data-animate-in="up">
+<img src="messenger/flow.png" alt="Wireflow" style="width:100%; margin: center">
+</img>
+<p>To begin, I wireframed current user flows to define the logic of navigation and usability in the app.</p>
+<img data-animate-in="up">
+<img src="messenger/lofi.png" alt="Lo-fidelity wireframes" style="width:100%; margin: center">
+</img>
+<p>Using what I learned from my research and brainstorm, I sketched out different explorations of an improved Chats tab and different features of navigation.</p>
+
+<div data-animate-in="up">
+<h5 style="opacity: 0.5; margin-top: 10px; margin-bottom: 10px">Exploring Inbox</h5>
+<p>I explored many different interface designs of Chats to test how certain features should be displayed. UI content requirements included: Search, Activity Status, Name&Icon, Chats (Unread, Read, Spam, Requests), Preferences, Compose Message, and Profile. First, I explored several ways Message Requests and New Connections could be displayed. I chose against Option 3 because it seemed confusing as to where the bounds of interaction were around Message Requests and New Connections. I chose Option 2 because it gave ample attention to different notifications. Additionally, in Option 1, Message Requests and New Connections were too similar to the display of regular chats, and I was worried users may find themselves accidentally tapping something they did not intend to tap. </p>
+<img data-animate-in="up">
+<img src="messenger/layout.png" alt="Wireframe 1" style="width:100%; margin: center">
+</img>
+</div>
+
+<div data-animate-in="up">
+<h5 style="opacity: 0.5; margin-top: 10px; margin-bottom: 10px">Entry Points</h5>
+<p>After deciding on the design and placement for these features, I explored different entry points for Preferences and Compose Message. I removed the camera feature because it seemed unnecessary because users could instantaneously upload photos by tapping on 'Your Story.' After user testing, I decided against Option 1 because many users expressed that the placement of Preferences indicated high traffic, where in reality, many users used Compose Message much more than Preferences. Option 3 was too similar to Messenger's previous layout. I chose against Option 4 because Preferences did not warrant enough use to be standalone. I decided on Option 2 because I wanted to create a UI difference, and it was the least disruptive.</p>
+<img data-animate-in="up">
+<img src="messenger/compose.png" alt="Wireframe 2" style="width:100%; margin: center">
+</img>
+<p>I also removed the Chats tab symbol on the bottom of the screen because it seemed redundant.</p>
+<img data-animate-in="up">
+<img src="messenger/compare.png" alt="Wireframe 3" style="width:100%; margin: center">
+</img>
+
+<div data-animate-in="up">
+<h5 style="opacity: 0.5; margin-top: 10px; margin-bottom: 10px">Personalized Inbox</h5>
+<p>One of the key pain points from my user research was that users could not sort their unread chats. </p>
+
+<p>Taking this information, I explored different buttons for better usability. Based on user testing, I chose Option 2 because it utilized the space the best. Additionally, the outline of the buttons helped visualize each option for the user.</p>
+<img data-animate-in="up">
+<img src="messenger/sort.png" alt="Wireframe 4" style="width:100%; margin: center">
+</img></div>
+
+<div data-animate-in="up">
+<h5 style="opacity: 0.5; margin-top: 10px; margin-bottom: 10px">Clear Commands</h5>
+<p>Another key pain point was the confusion of the search bar. Many users stated that after they developed a method to search certain things (chats, people), they did not explore different feature of the search bar. Therefore, some users did not know to what extent they could use the search bar. </p>
+<img data-animate-in="up">
+<img src="messenger/searchbar.png" alt="Wireframe 5" style="width:100%; margin: center">
+</img>
+<p>After user testing, I chose Option 1. Option 2 still seemed confusing for some users. With Option 1, users who used to scroll to find chats now used the search bar instead. </p></div>
+
+<div data-animate-in="up">
+<h4 style="margin-top: 45px; margin-bottom: 10px">Final Interactions</h4>
+<p>After testing and exploring different features, here are the four interactions.</p>
+<h5 style="opacity: 0.5; margin-top: 10px; margin-bottom: 10px">From Complex to Simple</h5>
+<img data-animate-in="up">
+<img src="messenger/1.png" alt="Interaction 1" style="width:100%; margin: center">
+</img>
+<p>Users are able to view all their chats in one screen. I chose this interaction because users do not have to navigate to another screen to view part of their chats. This interaction allows users to spend less time finding Message Requests and more time interacting.</p>
+
+<h5 style="opacity: 0.5; margin-top: 10px; margin-bottom: 10px">From Cluttered to Organized</h5>
+<img data-animate-in="up">
+<img src="messenger/2.png" alt="Interaction 2" style="width:100%; margin: center">
+</img>
+<p>Users can now instantly find their New Connections, which are separated from their chats list. This allows the chats list to be cleared up, leaving behind only active chats.</p>
+
+<h5 style="opacity: 0.5; margin-top: 10px; margin-bottom: 10px">From Limited to Accessible</h5>
+<img data-animate-in="up">
+<img src="messenger/4.png" alt="Interaction 4" style="width:100%; margin: center">
+</img>
+<p>Users no longer have to scroll through their chats list to find unread chats. Now, they are able to customize the inbox to find certain chats instantaneously.</p>
+</div>
+
+<h5 style="opacity: 0.5; margin-top: 10px; margin-bottom: 10px">From Confusing to Clear</h5>
+<img data-animate-in="up">
+<img src="messenger/3.png" alt="Interaction 3" style="width:100%; margin: center">
+</img>
+<p>Users are able to use the search bar to their hearts' extent. Although the interaction of the search bar did not change, the clarification as to what a user can search afforded users clarity. Users who had previously been confused by the inputs of the search bar were now able to use it without any hesitation. </p>
+
+<div data-animate-in="up">
+<h4 style="margin-top: 45px; margin-bottom: 10px">Prototype</h4>
+<p>Click <a href="https://www.youtube.com/watch?v=CzyHBOQiZps&feature=youtu.be&ab_channel=HaeminHwang">here</a> to view a prototype I made in Figma.</p>
+</div>
+
+<div data-animate-in="up">
+<h4 style="margin-top: 45px; margin-bottom: 10px">Reflection</h4>
+<p>After user testing my final prototype, I received positive feedback. Doing this case study as well as redesigning Messenger allowed me to understand how integral the user is for design and usability.</p>
+
+
+</div>
+</div>
+
+</body>
+</html>
