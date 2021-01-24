@@ -3,6 +3,7 @@
 <head>
 <title>creative coding</title>
 <meta name="creative coding" content="width=device-width, initial-scale=1">
+<link href="styles/styles.css" rel="stylesheet"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(function() {
@@ -184,7 +185,6 @@ main {
 	text-align: left;
 	font-size: 30px;
 	color: olivedrab;
-	margin-left: 400px;
 }
 
 h1 {
@@ -195,9 +195,18 @@ margin-left:25px;
 margin-right:25px;
 }
 
-	a{color: red;
-	text-decoration: none;
-	}
+h2 {
+  font-family: system-ui, sans-serif;
+  font-size: 48px;
+  text-align: left;
+}
+
+h4 {
+  font-family: system-ui, sans-serif;
+  font-size: 36px;
+  text-align: left;
+}
+
 a:visited, a:focus {
     text-decoration: none;
     color: red;
@@ -207,13 +216,26 @@ text-decoration: none;
 color: blue;
 }
 
+.fixed {
+max-width: 700px;
+margin:auto;
+padding: 30px;
+}
+video{	
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 700px;
+}
+
 </style>
 </head>
 
 <body>
 
 <h1 style="color:red"><b><a href="index.html" style="text-decoration:none">hae,</a></b></h1>
-<button onclick="topFunction()" id="myBtn" title="Go to top"><img src="emojis/up.png" alt="up button" style="display:block;margin-left:auto;margin-right:auto;width:40px;height:40px;"></button>
+<button onclick="topFunction()" id="myBtn" title="Go to top"><img src="emojis/up.png" alt="up button" style="width:40px;height:40px;"></button>
+
 <script>
 var mybutton = document.getElementById("myBtn");
 window.onscroll = function() {scrollFunction()};
@@ -233,38 +255,45 @@ function topFunction() {
 }
 </script>
 
-<main><i>
-	creative coding
-</i></main>
+<div class="spacing">
+<div class="fixed">
+<main><h2 style="margin-bottom: 0px"><b>
+	Creative Coding</b></h2>
+</div>
 
-<p data-animate-in="left" style="margin-left:25px;">
+<div class="spacing">
+<div class="fixed">
+<div data-animate-in="left">
+<p>
 Notes:</p>
-<p data-animate-in="left" style="margin-left:25px;"><sup>1</sup> Used Processing to create code and design</p>
-<p data-animate-in="left" style="margin-left:25px;"><sup>2</sup> Used two separate voicemails from my parents as sounds. 
+<p><sup>1</sup> Used Processing to create code and design</p>
+<p data-animate-in="left"><sup>2</sup> Used two separate voicemails from my parents as sounds. 
 <br>The first one is my dad calling from home on the first day 
 <br>of college. The second one is my mom calling me 
 <br>when we were in South Korea.</p>
+</div>
 
+<div data-animate-in="up">
+<h4 style="margin-top: 45px; margin-bottom: 10px">Overview </h4>
+<p>The creative coding project goal was to create an interactive drawing tool that involves different sounds. I embedded two different sounds and created a code that makes marks based on the soundwaves.</p>
+<p>Audio notes are included in the video. Please view full screen to see translation on the bottom left.</p>
 
-<h2 style="margin-left:400px;margin-right:150px;">The creative coding project goal was to create an interactive drawing tool that involves different sounds. I embedded two different sounds and created a code that makes marks based on the soundwaves.</h2>
-<h2 style="margin-left:400px;margin-right:150px;">Audio notes are included in the video. Please view full screen to see translation on the bottom left.</h2>
-
-<video style="margin-left:100px;width=40%; height=40%;" controls>
+<video controls>
   <source src="cc/ccscreen.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
+<br>
 
-<video style="margin-left:100px;width=40%; height=40%;" controls>
+<video controls>
   <source src="cc/screen1.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
+</br>
 
 
-
-
-
-</h2>
-
+</div>
+</div>
+</div>
 
 
 </body>
