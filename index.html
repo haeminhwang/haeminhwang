@@ -1,9 +1,6 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html>
 <head>
-	 <link rel="icon" type="image/png" href="icon.png">
-<title>hae <3</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body {
 background-color: #ffd1dc;
@@ -37,7 +34,7 @@ animation: fadeInAnimation ease 1s;
    
 }
 
-.tooltip {
+	.tooltip {
   position: relative;
 font-family: system-ui, sans-serif;
   display: inline-block;
@@ -88,7 +85,7 @@ color:blue;
 h1 {
   font-family: system-ui, sans-serif;
   font-size: 48px;
-  text-align: left;
+  
 margin-left:25px;
 margin-right:25px;
 }
@@ -105,36 +102,56 @@ margin-right:25px;
 
 
 .absolute {
-	position: absolute;
+	position: fixed;
 	bottom: 0px;
 	right: 0px;
 }
-	
-	@media only screen and (max-width:620px) {
-  /* For mobile phones: */
-  .a{
-    width:30%;
-	  margin-top: 100px;
-	
-  }
-  .h1, .p{
-  width:30%;
-  }
+
+* {
+ box-sizing: border-box;
 }
+*:before,
+*:after {
+ box-sizing: border-box;
+}
+html,
+body {
+ height: 100%;
+ position: relative;
+}
+.main-container {
+ min-height: 100vh; /* will cover the 100% of viewport */
+ overflow: hidden;
+ display: block;
+ position: relative;
+ padding-bottom: 100px; /* height of your footer */
+}
+
+footer {
+ position: absolute;
+ bottom: 25px;
+margin-right:25px;
+text-align: right;
+ width: 100%;
+}
+
+
+
+
 </style>
 
-
+<title>hae <3</title>
 
 </head>
 <body>
+<div class=”main-container”>
 
 
-<h1 style="color:red"><b><a href="index.html" style="text-decoration:none">hae,</a></b></h1>
-<p style="color:red">
-	
+<h1 style="color:red; text-align: left"><b><a href="index.html" style="text-decoration:none">hae,</a></b></h1>
+
+
+<p style="color:red">	
 <strong>how are <mark>you</mark> doing today?</strong></p>
-
-
 
 <p style="color:red"><strong>I am
   <span
@@ -200,6 +217,9 @@ window.onload = function() {
   document.body.appendChild(css);
 };
 </script>
+
+
+
 <div class="row">
 	<div class="img">
 <a href="paintings.html">
@@ -232,8 +252,9 @@ window.onload = function() {
 
 
 
-<div class="absolute">
-<h1 style="color:red"><b><a href="about.html" style="text-decoration:none">min <3</b></h1>
+<footer>
+<h1 style="color:red"><b><a href="about.html" style="text-decoration:none; text-align: right">min <3</b></h1>
+</footer>
 </div>
 
 </body>
