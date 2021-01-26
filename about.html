@@ -79,13 +79,95 @@ margin:auto;
 padding: 24px;
 margin-left:100px;
 }
- 
+ .navbar {
+  overflow: hidden;
+  background-color: #ffd1dc;
+margin-left:25px;
+margin-top: -10px;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+	font-family: system-ui, sans-serif;
+  color: red;
+  text-align: center;
+  padding: 25px 0px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+font-family: system-ui, sans-serif;
+}
+
+.dropdown .dropbtn {
+  font-size: 32px;  
+  border: none;
+  outline: none;
+  color: red;
+  padding: 10px 10px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: #ffd1dc;
+color:blue
+}
+
+.dropdown-content {
+  display: none;
+font-family: system-ui, sans-serif;
+  position: absolute;
+  background-color: #ffd1dc;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+font-family: system-ui, sans-serif;
+  color: red;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+font-size:20px;
+}
+
+.dropdown-content a:hover {
+  background-color: #ffd1dc;
+color: blue;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 </style>
 </head>
 
 <body>
 
-<h1 style="color:red"><b><a href="index.html" style="text-decoration:none">hae,</a></b></h1>
+<br>
+<div class="navbar">
+<a href="index.html" style="font-size: 48px; padding: 0px; margin-top: 0px;"><strong>hae,</strong></a>
+  <a href="resume21.pdf" target="_blank" style="float:right; padding: 10px 25px; font-size: 24px;"><strong>Resume</strong></a>
+  <a href="about.html" style="float:right;padding: 10px 0px; font-size: 24px;"><strong>About</strong></a>
+  <div class="dropdown" style="float:right; padding:0px 20px; font-size: 24px;">
+    <button class="dropbtn" style="font-size: 24px;"><strong>Work 
+    </button></strong>
+    <div class="dropdown-content" style="font-size: 24px;"><strong>
+      <a href="messenger.html">&#128269; Messenger Case Study</a>
+      <a href="website.html">&#128187; Website Case Study</a>
+      <a href="creative_coding.html">&#128161; Creative Coding</a>
+	<a href="paintings.html">&#127912; Paintings</a>
+</strong>
+    </div>
+  </div> 
+</div>
 
 <div class="spacing">
 <div class="fixed">
