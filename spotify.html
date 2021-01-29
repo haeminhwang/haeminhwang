@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Spotify App Case Study</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="styles/styles.css" rel="stylesheet"/>
+	 <link rel="icon" type="image/png" href="icon.png">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(function() {
+  
+  var html = $('html');
+  // Detections
+  if (!("ontouchstart" in window)) {
+    html.addClass("noTouch");
+  }
+  if ("ontouchstart" in window) {
+    html.addClass("isTouch");
+  }
+  if ("ontouchstart" in window) {
+    html.addClass("isTouch");
+  }
+  if (document.documentMode || /Edge/.test(navigator.userAgent)) {
+    if (navigator.appVersion.indexOf("Trident") === -1) {
+      html.addClass("isEDGE");
+    } else {
+      html.addClass("isIE isIE11");
+    }
+  }
+  if (navigator.appVersion.indexOf("MSIE") !== -1) {
+    html.addClass("isIE");
+  }
+  if (
+    navigator.userAgent.indexOf("Safari") != -1 &&
+    navigator.userAgent.indexOf("Chrome") == -1
+  ) {
+    html.addClass("isSafari");
+  }
+
+  // On Screen
+
+  $.fn.isOnScreen = function() {
+    var elementTop = $(this).offset().top,
+      elementBottom = elementTop + $(this).outerHeight(),
+      viewportTop = $(window).scrollTop(),
+      viewportBottom = viewportTop + $(window).height();
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+  };
+
+  function detection() {
+    for (var i = 0; i < items.length; i++) {
+      var el = $(items[i]);
+
+      if (el.isOnScreen()) {
+        el.addClass("in-view");
+      } else {
+        el.removeClass("in-view");
+      }
+    }
+  }
+
+  var items = document.querySelectorAll(
+    "*[data-animate-in], *[data-detect-viewport]"
+  ),
+    waiting = false,
+    w = $(window);
+
+  w.on("resize scroll", function() {
+    if (waiting) {
+      return;
+    }
+    waiting = true;
+    detection();
+
+    setTimeout(function() {
+      waiting = false;
+    }, 100);
+  });
+
+  $(document).ready(function() {
+    setTimeout(function() {
+      detection();
+    }, 500);
+
+    for (var i = 0; i < items.length; i++) {
+      var d = 0,
+        el = $(items[i]);
+      if (items[i].getAttribute("data-animate-in-delay")) {
+        d = items[i].getAttribute("data-animate-in-delay") / 1000 + "s";
+      } else {
+        d = 0;
+      }
+      el.css("transition-delay", d);
+    }
+  });
+});
+</script>
+
+<style>
+[data-animate-in] {
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease
+}
+
+[data-animate-in="up"] {
+    transform: translate3d(0, 24px, 0)
+}
+
+[data-animate-in="left"] {
+    transform: translate3d(-25%, 0, 0)
+}
+
+[data-animate-in="right"] {
+    transform: translate3d(25%, 0, 0)
+}
+
+[data-animate-in="down"] {
+    transform: translate3d(0, -24px, 0)
+}
+
+[data-animate-in="fadeIn"] {
+    transform: translate3d(0, 0, 0)
+}
+
+[data-animate-in].in-view {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transition: transform 0.6s ease, opacity 0.6s ease
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease
+}
+
+.page-loaded .fade-in,.page-loaded.fade-in {
+    opacity: 1
+}
+
+.isSafari.isTouch [data-animate-in],.isSafari.isTouch [data-animate-in="up"] {
+    opacity: 1;
+    transition: none;
+    transform: none
+}
+
+body {
+background-color: #ffd1dc;
+overflow-x:hidden;
+font-family: system-ui, sans-serif;
+animation: fadeInAnimation ease 1s; 
+            animation-iteration-count: 1; 
+            animation-fill-mode: forwards; 
+        } 
+        @keyframes fadeInAnimation { 
+            0% { 
+                opacity: 0; 
+            } 
+            100% { 
+                opacity: 1; 
+            } 
+}
+
+html{
+scroll-behavior:smooth;
+}
+#myBtn {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  font-size: 40px;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+}
+
+#myBtn:hover {
+  background-color: olivedrab;
+}
+main {
+	text-align: left;
+	color: olivedrab;
+	
+}
+a{color: red;
+	text-decoration: none;
+	}
+
+a:visited, a:focus {
+    text-decoration: none;
+    color: red;
+}
+a:hover {
+text-decoration: none;
+color: blue;
+}
+
+
+img{	
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 1000px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.video {
+ width: 80%;
+ margin: 0 auto;
+ display: block;
+ height:auto;
+}
+h1 {
+  font-family: system-ui, sans-serif;
+  font-size: 48px;
+  text-align: left;
+margin-left:25px;
+margin-right:25px;
+}
+
+h2 {
+  font-family: system-ui, sans-serif;
+  font-size: 48px;
+  text-align: left;
+}
+
+h3 {
+  font-family: system-ui, sans-serif;
+  font-size: 40px;
+  text-align: left;
+}
+
+h4 {
+  font-family: system-ui, sans-serif;
+  font-size: 36px;
+  text-align: left;
+}
+
+h5 {
+  font-family: system-ui, sans-serif;
+  font-size: 24px;
+  text-align: left;
+}
+h6 {
+  font-family: system-ui, sans-serif;
+  font-size: 20px;
+  text-align: left;
+}
+
+.fixed {
+max-width: 700px;
+margin:auto;
+padding: 30px;
+}
+.navbar {
+  overflow: hidden;
+  background-color: #ffd1dc;
+margin-left:25px;
+margin-top: -10px;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+	font-family: system-ui, sans-serif;
+  color: red;
+  text-align: center;
+  padding: 25px 0px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+font-family: system-ui, sans-serif;
+}
+
+.dropdown .dropbtn {
+  font-size: 32px;  
+  border: none;
+  outline: none;
+  color: red;
+  padding: 10px 10px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: #ffd1dc;
+color:blue
+}
+
+.dropdown-content {
+  display: none;
+font-family: system-ui, sans-serif;
+  position: absolute;
+  background-color: #ffd1dc;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+font-family: system-ui, sans-serif;
+  color: red;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+font-size:20px;
+}
+
+.dropdown-content a:hover {
+  background-color: #ffd1dc;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+</head>
+
+<body>
+
+<br>
+<div class="navbar">
+<a href="index.html" style="font-size: 48px; padding: 0px; margin-top: 0px;"><strong>hae,</strong></a>
+  <a href="resume21.pdf" target="_blank" style="float:right; padding: 10px 25px; font-size: 24px;"><strong>Resume</strong></a>
+  <a href="about.html" style="float:right;padding: 10px 0px; font-size: 24px;"><strong>About</strong></a>
+  <div class="dropdown" style="float:right; padding:0px 20px; font-size: 24px;">
+    <button class="dropbtn" style="font-size: 24px;"><strong>Work 
+    </button></strong>
+    <div class="dropdown-content" style="font-size: 24px;"><strong>
+      <a href="messenger.html">&#128269; Messenger Case Study</a>
+      <a href="messenger.html">&#128483; Spotify App Case Study</a>
+      <a href="website.html">&#128187; Website Case Study</a>
+      <a href="creative_coding.html">&#128161; Creative Coding</a>
+	<a href="paintings.html">&#127912; Paintings</a>
+</strong>
+    </div>
+  </div> 
+</div>
+
+
+
+<button onclick="topFunction()" id="myBtn" title="Go to top"><img src="emojis/up.png" alt="up button" style="width:40px;height:40px;"></button>
+	
+<script>
+var mybutton = document.getElementById("myBtn");
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+
+<div class="spacing">
+<div class="fixed">
+<main><h2 style="margin-bottom: 0px"><b>
+	Case Study: Improving Social Engagement in Spotify App</b>
+</h2><h3 style="margin-top: 10px; opacity: 0.5">
+Product Design // Side Project</h3>
+</main>
+
+<h4 style="margin-top: 45px; margin-bottom: 10px">Coming Soon... </h4>
+
+</div>
+</div>
+
+</body>
+</html>
