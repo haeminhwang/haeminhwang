@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	 <link rel="icon" type="image/png" href="icon.png">
-
-<title>Paintings</title>
+<title>paintings</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="styles/styles.css" rel="stylesheet"/>
 <style>
-
 body {
-
-
 background-color: #ffd1dc;
 font-family: system-ui, sans-serif;
 animation: fadeInAnimation ease 1s; 
@@ -23,67 +20,97 @@ animation: fadeInAnimation ease 1s;
                 opacity: 1; 
             } 
 }
+
+
+
+
+.navbar {
+  overflow: hidden;
+  background-color: #ffd1dc;
+margin-left:25px;
+margin-top: -10px;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+	font-family: system-ui, sans-serif;
+  color: red;
+  text-align: center;
+  padding: 25px 0px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+font-family: system-ui, sans-serif;
+}
+
+.dropdown .dropbtn {
+  font-size: 32px;  
+  border: none;
+  outline: none;
+  color: red;
+  padding: 10px 10px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: #ffd1dc;
+	color: blue;
+}
+
+.dropdown-content {
+  display: none;
+font-family: system-ui, sans-serif;
+  position: absolute;
+  background-color: #ffd1dc;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+font-family: system-ui, sans-serif;
+  color: red;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+font-size:20px;
+}
+
+.dropdown-content a:hover {
+  background-color: #ffd1dc;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.fixed {
+max-width: 700px;
+margin:auto;
+}
+
+.row{
+    text-align:center;
+}
+
 main {
-	text-align: center;
-	font-size: 30px;
+	text-align: left;
 	color: olivedrab;
+	
 }
-
-.sun {
-	position: fixed;
-	top: 50px;
-	left: 150px;
-}
-
-.tree {
-	position: fixed;
-	top: 170px;
-	left: 340px;
-}
-
-.house {
-	position: fixed;
-	top: 275px;
-	left: 500px;
-}
-
-.car {
-	position: fixed;
-	top: 375px;
-	left: 900px;
-}
-
-.rose {
-	position: fixed;
-	bottom: 100px;
-	left: 400px;
-}
-
-.sunflower {
-	position: fixed;
-	bottom: 100px;
-	left: 250px;
-}
-
-.tulip {
-	position: fixed;
-	bottom: 100px;
-	left: 100px;
-}
-.leaf {
-	position: fixed;
-	top: 100px;
-	left: 250px;
-}
-
 .absolute {
 	position: absolute;
 	bottom: 0px;
 	right: 0px;
 }
-a{color: red;
-	text-decoration: none;
-	}
+
 a:visited, a:focus {
     text-decoration: none;
     color: red;
@@ -96,73 +123,99 @@ h1 {
   font-family: system-ui, sans-serif;
   font-size: 48px;
   text-align: left;
-margin-left:25px;
-margin-right:25px;
+
+
+h2 {
+  font-family: system-ui, sans-serif;
+  font-size: 48px;
+  text-align: left;
 }
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 
 </style>
 </head>
 
 <body>
 
-
-<h1 style="color:red"><b><a href="index.html" style="text-decoration:none">hae,</a></b></h1>
-
-<div class="sun">
-<a href="backbone.html">
-<img src="emojis/sun.png" alt="sun emoji" style="width:75px;height:75px;">
-</a>
+<br>
+<div class="navbar">
+<a href="index.html" style="font-size: 48px; padding: 0px; margin-top: 0px;"><strong>hae,</strong></a>
+  <a href="resume21.pdf" target="_blank" style="float:right; padding: 10px 25px; font-size: 24px;"><strong>Resume</strong></a>
+  <a href="about.html" style="float:right;padding: 10px 0px; font-size: 24px;"><strong>About</strong></a>
+  <div class="dropdown" style="float:right; padding:0px 20px; font-size: 24px;">
+    <button class="dropbtn" style="font-size: 24px;"><strong>Work 
+    </button></strong>
+    <div class="dropdown-content" style="font-size: 24px;"><strong>
+      <a href="messenger.html">&#128269; Messenger Case Study</a>
+	    <a href="spotify.html">&#128483; Spotify App Case Study</a>
+      <a href="website.html">&#128187; Website Case Study</a>
+      <a href="creative_coding.html">&#128161; Creative Coding</a>
+	<a href="paintings.html">&#127912; Paintings</a>
+</strong>
+    </div>
+  </div> 
 </div>
 
-<div class="tree">
-<a href="darwinism.html">
-<img src="emojis/tree.png" alt="tree emoji" style="width:300px;height:300px;">
-</a>
+<div class="spacing">
+<div class="fixed">
+<main><h1><b>
+	Paintings</b>
+</h1>
+</main>
+
+<body>
+<div class="row">
+  <div class="column">
+    <a href="blob_babes.html"><img src="paintings/spring_sprite.jpg" alt="Snow" style="width:80%; margin-top: 25px">
+  </a></div>
+  <div class="column">
+    <a href="blob_babes.html#2"><img src="paintings/deflowering.png" alt="Forest" style="width:100%">
+  </a></div>
+  <div class="column">
+    <a href="blob_babes.html#3"><img src="paintings/cherrybomb.png" alt="Mountains" style="width:100%">
+  </a></div>
+<div class="column">
+    <a href="backbone.html"><img src="paintings/motorbike.jpg" alt="Snow" style="width:80%; margin-top: 25px">
+  </a></div>
+  <div class="column">
+    <a href="darwinism.html"><img src="paintings/darwinism.jpg" alt="Forest" style="width:85%; margin-top: 25px;">
+  </a></div>
+  <div class="column">
+    <a href="slippers.html"><img src="paintings/slippers.jpeg" alt="Mountains" style="width:85%; margin-top:25px;">
+  </a></div>
+<div class="column">
+    <a href="apex.html"><img src="paintings/painting.png" alt="Snow" style="width:100%; margin-top: 25px">
+  </a></div>
+  <div class="column">
+    <a href="home.html"><img src="paintings/home.jpeg" alt="Forest" style="width:100%; margin-top: 25px; margin-left: 10px">
+  </a></div>
+ 
 </div>
 
-<div class="house">
-<a href="home.html">
-<img src="emojis/house.png" alt="house emoji" style="width:200px;height:200px;">
-</a>
-</div>
 
-<div class="car">
-<a href="slippers.html">
-<img src="emojis/car.png" alt="car emoji" style="width:100px;height:100px;">
-</a>
+
+</div>
 </div>
 
 
-<div class="tulip">
-<a href="blob_babes.html">
-<img src="emojis/tulip.png" alt="tulip emoji" style="width:125px;height:125px;">
-</a>
-</div>
 
-<div class="sunflower">
-<a href="blob_babes.html#2">
-<img src="emojis/sunflower.png" alt="sunflower emoji" style="width:125px;height:125px;">
-</a>
-</div>
-
-<div class="rose">
-<a href="blob_babes.html#3">
-<img src="emojis/rose.png" alt="rose emoji" style="width:125px;height:125px;">
-</a>
-</div>
-
-<div class="leaf">
-<a href="apex.html">
-<img src="emojis/leaf.png" alt="leaf emoji" style="width:100px;height:100px;">
-</a>
-</div>
-
-<main><i>
-	paintings
-	</i></main>
-
-
-
-
-</body>
-</html>
+	</body></html>
