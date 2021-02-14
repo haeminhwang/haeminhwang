@@ -147,6 +147,34 @@ color: blue;
 .dropdown:hover .dropdown-content {
   display: block;
 }
+	
+	*{
+box-sizing:border-box;
+}
+
+.column{
+float: left;
+width: 50%;
+margin-left: 100px;
+padding:24px;
+max-width: 700px;
+}
+
+.row:after{
+content:"";
+display; table;
+clear: both;
+}
+
+
+ img{
+width: 80%;
+}
+
+@media screen and (max-width:600px){
+.column{
+width: 100%;}
+}
 </style>
 </head>
 
@@ -171,12 +199,12 @@ color: blue;
   </div> 
 </div>
 	
-<div style="float:right;">
-<p><img src="me.JPG" alt="photo of Haemin" style="width:70%">
-</div>
 	
-<div class="spacing">
-<div class="fixed">
+	<div class="spacing">
+
+<div class="row">
+  <div class="column">
+
 <h5 style="margin-top: 10px; margin-bottom:10px;">
 Hello &#x1F44B; I'm Haemin!
 <br>
@@ -195,6 +223,9 @@ Hello &#x1F44B; I'm Haemin!
 <a href="mailto:hhwang@risd.edu" target="_blank"><h4 class="fa fa-envelope-o" style="font-size:32px;"></h4></a>
 &nbsp;&nbsp;&nbsp;
 <a href="resume21.pdf" target="_blank"><h4 class="fa fa-file-o" style="font-size:32px;"></h4></a>
+  </div>
+  <div class="column">
+<p><img src="me.JPG" alt="photo of Haemin" >
 
  </div>
 </div>
